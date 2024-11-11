@@ -1,0 +1,12 @@
+[package]
+name = "azurite-demo"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+azure_core = "0.21.0"
+azure_storage = "0.21.0"
+azure_storage_blobs = "0.21.0"
+futures = "0.3.31"
+tokio = { version = "1.41.0", features = ["full"] }
+
