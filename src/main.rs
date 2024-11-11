@@ -1,8 +1,4 @@
-use azure_core::{
-    error::{ErrorKind, ResultExt},
-    Url,
-};
-use azure_storage::prelude::*;
+use azure_core::Url;
 use azure_storage_blobs::prelude::*;
 use futures::stream::StreamExt;
 
@@ -25,6 +21,14 @@ async fn main() -> azure_core::Result<()> {
             }
         }
     }
+
+    let specific_blob_client = blob_service_client
+        .container_client("meow")
+        .blob_client("a_cute_cat.png");
+
+    specific_blob_client
+        .copy_from_url(Url::parse("https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg").unwrap())
+        .await?;
 
     Ok(())
 }
